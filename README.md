@@ -1,13 +1,14 @@
-# Welcome to Micro-Mongo
+# Microservice-MongoDB-Springboot
 
-Hi Everyone !
-
-I'm Soumadeep Dhar. I have a good knowledge as well as hands on experience of writing code in  C, C++, Java and Python. Also I have an experience of about 2+ years in the software development and web programming which can be run standalone on any machine. 
 
 # About 
 
-This is a web applications which is made from scratch with the help of **Spring Boot** using Java. 
- 
+This is a micro service based spring boot architechture with Mongodb with the help of **Spring Boot** using Java. 
+
+## Requirements
+* Active internet connection
+* Fedora 32 or above
+
 ## Tools
 1. Eclipse IDE (You can choose any IDE)
 2. Postman App
@@ -15,3 +16,6 @@ This is a web applications which is made from scratch with the help of **Spring 
 4. Maven (3.0+)
 5. Robo3t (For MongoDB, Else you can choose any)
 6. Mysql 
+
+## Disclaimer
+This tool has been tried and tested multiple times and is expected to work flawlessly in Fedora Workstation 32 or above. It has not been tested on any of the spins yet so proceed with caution. While the chances of things going wrong is pretty slim but still you would want to make backups, should things do not go as expected. As always, you are choosing to use this tool at your will and you cannot hold me responsible for any mishap there may occur due to the misuse of this tool.
