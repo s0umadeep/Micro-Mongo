@@ -1,4 +1,4 @@
-# Welcome to Web-Application
+# Welcome to Micro-Mongo
 
 Hi Everyone !
 
@@ -6,7 +6,7 @@ I'm Soumadeep Dhar. I have a good knowledge as well as hands on experience of wr
 
 # About 
 
-Here you can find various web applications which are made from scratch with the help of **Spring Boot** using Java. 
+This is a web applications which is made from scratch with the help of **Spring Boot** using Java. 
  
 ## Tools
 1. Eclipse IDE (You can choose any IDE)
