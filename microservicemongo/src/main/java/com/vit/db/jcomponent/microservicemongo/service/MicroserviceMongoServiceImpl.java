@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.vit.db.jcomponent.microservicemongo.dao.DomainRepository;
+import com.vit.db.jcomponent.microservicemongo.dao.MicroserviceMongoDao;
 import com.vit.db.jcomponent.microservicemongo.model.Attacks;
 import com.vit.db.jcomponent.microservicemongo.model.ServiceSector;
 import com.vit.db.jcomponent.microservicemongo.model.ServiceSectors;
@@ -14,6 +17,12 @@ import com.vit.db.jcomponent.microservicemongo.model.ServiceSectors;
 public class MicroserviceMongoServiceImpl implements MicroserviceMongoService {
 
 	public static Log log;
+	
+	@Autowired
+	DomainRepository domainRepository;
+	
+	@Autowired
+	MicroserviceMongoDao microserviceMongo;
 	
 	@Override
 	public ServiceSectors createAttacks(String name, int id) {
@@ -39,10 +48,26 @@ public class MicroserviceMongoServiceImpl implements MicroserviceMongoService {
 			attacksList.add(attacks);
 			sector.setSectorId(id);
 			service.add(sector);
-			sectors.setServiceId(id+6);
+			sectors.setServiceId("888");
 			sectors.setService(service);
 			sectors.setAttacks(attacksList);
 		}
 		return sectors;
+	}
+
+	@Override
+	public String getSectors(String id) {
+		
+		String filteredId = id;
+		// Filter Logic;
+		
+		// save into mongoDB
+		microserviceMongo.putSectorsMongo(filteredId);
+		
+		//save into MYSQLDB
+		microserviceMongo.putSectorsSQL(filteredId);
+		
+		return id;
+
 	}
 }

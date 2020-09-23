@@ -1,7 +1,17 @@
 package com.vit.db.jcomponent.microservicemongo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Service")
 public class ServiceSector {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	Integer sectorId;
 	String sectorName;
 	String sectorLocation;
@@ -58,6 +68,13 @@ public class ServiceSector {
 		this.sectorId = sectorId;
 		this.sectorName = sectorName;
 		this.sectorLocation = sectorLocation;
+	}
+
+	/**
+	 * 
+	 */
+	public ServiceSector() {
+		super();
 	}
 
 	@Override

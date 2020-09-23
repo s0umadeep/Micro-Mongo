@@ -9,5 +9,6 @@ public interface MicroserviceMongoService {
 
 	public ServiceSectors createAttacks(String name, int id);
 
+	public String getSectors(String id);
 
 }

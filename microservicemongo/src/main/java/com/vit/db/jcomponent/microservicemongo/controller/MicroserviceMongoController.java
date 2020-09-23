@@ -15,11 +15,14 @@ public class MicroserviceMongoController {
 
 	@Autowired
 	MicroserviceMongoService microservicemongo;
-	
-	@GetMapping("/Microservice/Attack/{name}/{id}")
 
-	ServiceSectors createAttack(@PathVariable("name") String name ,@PathVariable("id") int id) {
-		return microservicemongo.createAttacks(name,id);
+	@GetMapping("/Microservice/Attack/{name}/{id}")
+	ServiceSectors createAttack(@PathVariable("name") String name, @PathVariable("id") int id) {
+		return microservicemongo.createAttacks(name, id);
 	}
-	
+
+	@GetMapping("/Microservice/Attack/{id}")
+	String getSectors(@PathVariable("id") String id) {
+		return microservicemongo.getSectors(id);
+	}
 }
