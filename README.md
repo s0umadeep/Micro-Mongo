@@ -1,9 +1,9 @@
-# Microservice-MongoDB-Springboot
+# Microservice-Filtered-Databases-Springboot
 
 
 # About 
 
-This is a micro service based spring boot architechture with Mongodb with the help of **Spring Boot** using Java. 
+This is a micro service based spring boot architechture with Mongodb and MySQL with the help of **Spring Boot** using Java. This is mainly used for filtering the No Structured, Structered and Semi Structured Data into respective databases. 
 
 ## Requirements
 * Active internet connection
