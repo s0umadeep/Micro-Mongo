@@ -1,22 +1,29 @@
 package com.vit.db.jcomponent.microservicemongo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Service")
 public class ServiceSector {
 
-	Integer sectorId;
+	@Id
+	String sectorId;
 	String sectorName;
 	String sectorLocation;
 
 	/**
 	 * @return the sectorId
 	 */
-	public Integer getSectorId() {
+	public String getSectorId() {
 		return sectorId;
 	}
 
 	/**
 	 * @param sectorId the sectorId to set
 	 */
-	public void setSectorId(Integer sectorId) {
+	public void setSectorId(String sectorId) {
 		this.sectorId = sectorId;
 	}
 
@@ -53,11 +60,18 @@ public class ServiceSector {
 	 * @param sectorName
 	 * @param sectorLocation
 	 */
-	public ServiceSector(Integer sectorId, String sectorName, String sectorLocation) {
+	public ServiceSector(String sectorId, String sectorName, String sectorLocation) {
 		super();
 		this.sectorId = sectorId;
 		this.sectorName = sectorName;
 		this.sectorLocation = sectorLocation;
+	}
+
+	/**
+	 * 
+	 */
+	public ServiceSector() {
+		super();
 	}
 
 	@Override

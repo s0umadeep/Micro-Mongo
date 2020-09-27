@@ -42,6 +42,12 @@ public class Attacks {
 		this.attackLevel = attackLevel;
 	}
 	/**
+	 * 
+	 */
+	public Attacks() {
+		super();
+	}
+	/**
 	 * @param attackName
 	 * @param attackPer
 	 * @param attackLevel
