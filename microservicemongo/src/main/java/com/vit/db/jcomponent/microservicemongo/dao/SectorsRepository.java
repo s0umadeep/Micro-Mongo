@@ -5,6 +5,6 @@ import org.springframework.stereotype.Service;
 
 import com.vit.db.jcomponent.microservicemongo.model.ServiceSector;
 @Service
-public interface SectorsRepository extends JpaRepository<ServiceSector, Integer>{
+public interface SectorsRepository extends JpaRepository<ServiceSector, String>{
 
 }

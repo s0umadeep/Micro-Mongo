@@ -1,5 +1,7 @@
 package com.vit.db.jcomponent.microservicemongo.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -28,6 +30,32 @@ public class MicroserviceMongoDaoImpl implements MicroserviceMongoDao {
 	public void putSectorsSQL(String id) {
 		ServiceSector serviceSector = new ServiceSector();
 		serviceSector.setSectorName(id);;
+		serviceRepository.save(serviceSector);
+	}
+
+	@Override
+	public void postSectorsMongo(ServiceSectors sectors) {
+		domainRepository.insert(sectors);
+	}
+
+	@Override
+	public void postSectorsSql(List<ServiceSector> sectorsList) {
+		
+	}
+
+	@Override
+	public void postFilterSectors(String filteredName, String filteredID) {
+		ServiceSector serviceSector = new ServiceSector();
+		serviceSector.setSectorId(filteredID);
+		serviceSector.setSectorName(filteredName);
+		serviceRepository.save(serviceSector);		
+	}
+
+	@Override
+	public void putSectorsSQL(String filteredName, String filteredID) {
+		ServiceSector serviceSector = new ServiceSector();
+		serviceSector.setSectorId(filteredID);
+		serviceSector.setSectorName(filteredName);
 		serviceRepository.save(serviceSector);
 	}
 
