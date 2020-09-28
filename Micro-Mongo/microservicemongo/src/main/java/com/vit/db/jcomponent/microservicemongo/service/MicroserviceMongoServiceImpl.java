@@ -89,7 +89,7 @@ public class MicroserviceMongoServiceImpl implements MicroserviceMongoService {
 				for (ServiceSector serviceSect : sectors.getService()) {
 					sectorsList.add(serviceSect);
 					}				
-			//	microserviceMongo.postSectorsSql(sectorsList);			
+				microserviceMongo.postSectorsSql(sectorsList);			
 			}
 			if(!sectors.getAttacks().isEmpty() && !sectors.getService().isEmpty()) {
 				

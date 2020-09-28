@@ -40,7 +40,7 @@ public class MicroserviceMongoDaoImpl implements MicroserviceMongoDao {
 
 	@Override
 	public void postSectorsSql(List<ServiceSector> sectorsList) {
-		
+		serviceRepository.saveAll(sectorsList);
 	}
 
 	@Override
