@@ -57,5 +57,9 @@ public class MicroserviceMongoController {
 	ServiceSectors postSectors(@RequestBody ServiceSectors sectors) {
 		return microservicemongo.postSectors(sectors);
 	}
-
+	
+	@GetMapping("/Microservice/Attack/getUnstructeredData") //get data from Mongo DB
+	List<ServiceSectors> getUnstructuredData() {
+		return microservicemongo.getUnstructuredData();
+	}
 }

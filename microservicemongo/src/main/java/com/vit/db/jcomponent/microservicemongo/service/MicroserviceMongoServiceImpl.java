@@ -24,29 +24,27 @@ import com.vit.db.jcomponent.microservicemongo.model.ServiceSectors;
 public class MicroserviceMongoServiceImpl implements MicroserviceMongoService {
 
 	public static Log log;
-	
+
 	@Autowired
 	DomainRepository domainRepository;
-	
+
 	@Autowired
 	MicroserviceMongoDao microserviceMongo;
-	
+
 	@Override
 	public ServiceSectors createAttacks(String name, String id) {
 		ServiceSectors sectors = new ServiceSectors();
-		if(!name.isEmpty() && id.isEmpty()) {
+		if (!name.isEmpty() && id.isEmpty()) {
 			ServiceSector sector = new ServiceSector("1111", name, "Pune");
 			List<ServiceSector> service = new ArrayList<ServiceSector>();
 			service.add(sector);
 			sectors.setService(service);
-		}
-		else if (name.isEmpty() && !id.isEmpty()) {
+		} else if (name.isEmpty() && !id.isEmpty()) {
 			ServiceSector sector = new ServiceSector(id, "VIT Project", "Vellore");
 			List<ServiceSector> service = new ArrayList<ServiceSector>();
 			service.add(sector);
 			sectors.setService(service);
-		}
-		else if(!name.isEmpty() && !id.isEmpty()) {
+		} else if (!name.isEmpty() && !id.isEmpty()) {
 			List<ServiceSector> service = new ArrayList<ServiceSector>();
 			List<Attacks> attacksList = new ArrayList<>();
 			ServiceSector sector = new ServiceSector(id, name, "Earth");
@@ -63,16 +61,16 @@ public class MicroserviceMongoServiceImpl implements MicroserviceMongoService {
 
 	@Override
 	public String getSectors(String id) {
-		
+
 		String filteredId = id;
 		// Filter Logic;
-		
+
 		// save into mongoDB
 		microserviceMongo.putSectorsMongo(filteredId);
-		
-		//save into MYSQLDB
+
+		// save into MYSQLDB
 		microserviceMongo.putSectorsSQL(filteredId);
-		
+
 		return id;
 
 	}
@@ -82,22 +80,22 @@ public class MicroserviceMongoServiceImpl implements MicroserviceMongoService {
 
 		ServiceSectors serviceSectors = new ServiceSectors();
 		List<ServiceSector> sectorsList = new ArrayList<ServiceSector>();
-		
-		if(sectors!=null) {
-			if (sectors.getService()!=null || !sectors.getService().isEmpty()) {
-				
+
+		if (sectors != null) {
+			if (sectors.getService() != null || !sectors.getService().isEmpty()) {
+
 				for (ServiceSector serviceSect : sectors.getService()) {
 					sectorsList.add(serviceSect);
-					}				
-				microserviceMongo.postSectorsSql(sectorsList);			
+				}
+				microserviceMongo.postSectorsSql(sectorsList);
 			}
-			if(!sectors.getAttacks().isEmpty() && !sectors.getService().isEmpty()) {
-				
-			// save into mongoDB
-			microserviceMongo.postSectorsMongo(sectors);
-			serviceSectors = sectors;
+			if (!sectors.getAttacks().isEmpty() && !sectors.getService().isEmpty()) {
+
+				// save into mongoDB
+				microserviceMongo.postSectorsMongo(sectors);
+				serviceSectors = sectors;
 			}
-		}else {
+		} else {
 			System.out.println("Sectors Data Not Found !!!");
 		}
 		return serviceSectors;
@@ -150,61 +148,78 @@ public class MicroserviceMongoServiceImpl implements MicroserviceMongoService {
 		return Reader;
 
 	}
-	
-	@Override
+
 	public List<String> postFileSectors(MultipartFile imageFile) {
 		String content = null;
+
 		try {
 			content = new String(imageFile.getBytes());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 		List<String> Reader = new ArrayList<String>();
 
 		try (Scanner sc = new Scanner(content)) {
 			boolean fn = false, fi = false;
-			String data = "", data1 = "", FilteredName = "", FilteredID = "";
+			String name = "", Id = "", Location = "", FilteredName = "", FilteredID = "", FilteredLocation = "";
 			while (sc.hasNextLine()) {
 
 				String unfiltereddata = sc.nextLine();
-				Pattern p = Pattern
-						.compile("<[anfopcANFOPC][a-zA-Z_-]*[erER]>[a-zA-Z,_']*</[anfopcANFOPC][a-zA-Z_-]*[erER]>"); // ,
-																														// '
-																														// remove
-				data = unfiltereddata.trim();
-				Matcher m = p.matcher(data.replace(" ", "_"));
-				boolean b = m.matches();
 
-				Pattern p2 = Pattern.compile(
-						"<[ucisnfoptUCISNFOPT][a-zA-Z_-]*[doDO.]>[a-zA-Z,_'0-9]*</[ucisnfoptUCISNFOPT][a-zA-Z_-]*[doDO.]>");
-				data1 = unfiltereddata.trim();
-				Matcher m2 = p2.matcher(data.replace(" ", "_"));
-				boolean c = m2.matches();
+				Pattern pID = Pattern.compile(
+						"<[ucisnfoptUCISNFOPT][a-zA-Z_-]*[doDO.]>[0-9]*</[ucisnfoptUCISNFOPT][a-zA-Z_-]*[doDO.]>");
+				Id = unfiltereddata.trim();
+				Matcher mID = pID.matcher(Id.replace(" ", "_"));
+				boolean bID = mID.matches();
 
-				if (c) {
+				Pattern pName = Pattern
+						.compile("<[anfopcANFOPC][a-zA-Z_-]*[erER]>[a-zA-Z,_']*</[anfopcANFOPC][a-zA-Z_-]*[erER]>");
+				name = unfiltereddata.trim();
+				Matcher mName = pName.matcher(name.replace(" ", "_"));
+				boolean bName = mName.matches();
+
+				Pattern pLocation = Pattern.compile(
+						"<[lpsucisnfoptUCISNFOPTSPL][a-zA-Z_-]*[doDO.]>[a-zA-Z,_']*</[nrseESRN][a-zA-Z_-]*[doDO.]>");
+				Location = unfiltereddata.trim();
+				Matcher mLocation = pLocation.matcher(Location.replace(" ", "_"));
+				boolean bLocation = mLocation.matches();
+
+				if (bID) {
 					fi = true;
-					int x = data1.indexOf(">");
-					int y = data1.lastIndexOf("<");
-					FilteredID = data1.substring(x + 1, y);
-
+					int x = Id.indexOf(">");
+					int y = Id.lastIndexOf("<");
+					FilteredID = Id.substring(x + 1, y);
 				}
-				if (b) {
+
+				if (bName) {
 					fn = true;
-					int x = data.indexOf(">");
-					int y = data.lastIndexOf("<");
-					FilteredName = data.substring(x + 1, y);
-
+					int x = name.indexOf(">");
+					int y = name.lastIndexOf("<");
+					FilteredName = name.substring(x + 1, y);
 				}
+
+				if (bLocation) {
+					fn = true;
+					int x = Location.indexOf(">");
+					int y = Location.lastIndexOf("<");
+					FilteredLocation = Location.substring(x + 1, y);
+				}
+
 				if (fi && fn) {
 					fn = false;
 					fi = false;
-					microserviceMongo.putSectorsSQL(FilteredName, FilteredID);
-					Reader.add("Name: " + FilteredName + "\nID :" + FilteredID);
+					microserviceMongo.postSectors(FilteredName, FilteredID, FilteredLocation);
+					Reader.add("Name: " + FilteredName + "\nID :" + FilteredID + "\nSector :" + FilteredLocation);
 				}
 			}
 		}
 		return Reader;
 
 	}
-}
 
+	@Override
+	public List<ServiceSectors> getUnstructuredData() {
+		return microserviceMongo.getUnstructuredData();
+	}
+}
