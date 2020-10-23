@@ -20,4 +20,6 @@ public interface MicroserviceMongoService {
 	public ServiceSectors postSectors(ServiceSectors sectors);
 	
 	public List<String> postFileSectors(MultipartFile imageFile) throws FileNotFoundException;
+	
+	public List<ServiceSectors> getUnstructuredData();
 }

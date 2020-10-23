@@ -21,5 +21,9 @@ public interface MicroserviceMongoDao {
 	public void postSectorsSql(List<ServiceSector> sectorsList);
 	
 	public void putSectorsSQL(String filteredName,String filteredID);
+		
+	public List<ServiceSectors> getUnstructuredData();
+
+	public void postSectors(String filteredName, String filteredID, String filteredLocation);
 
 }

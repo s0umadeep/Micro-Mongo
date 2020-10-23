@@ -59,4 +59,18 @@ public class MicroserviceMongoDaoImpl implements MicroserviceMongoDao {
 		serviceRepository.save(serviceSector);
 	}
 
+	@Override
+	public List<ServiceSectors> getUnstructuredData() {
+		return domainRepository.findAll();
+	}
+
+	@Override
+	public void postSectors(String filteredName, String filteredID, String filteredLocation) {
+		ServiceSector serviceSector = new ServiceSector();
+		serviceSector.setSectorId(filteredID);
+		serviceSector.setSectorName(filteredName);
+		serviceSector.setSectorLocation(filteredLocation);
+		serviceRepository.save(serviceSector);
+	}
+
 }
