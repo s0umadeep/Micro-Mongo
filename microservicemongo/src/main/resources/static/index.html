@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+body {
+  background-image: url("images/bkgd.jpg");
+  height: 500px; 
+   height: 100%;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+</style>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <title>  </title>
+        <link rel="stylesheet" href="/css/main.css" />
+    </head>
+        <noscript>
+            <h2>Sorry! Your browser doesn't support Javascript</h2>
+        </noscript>
+  
+   <body>     
+       <div class="nav-wrapper">
+          <div class="left-side">
+                <div class="nav-link-wrapper">
+                    <a href="index.html"><b>HOME</b></a>
+                </div>
+                <div class="nav-link-wrapper">
+                    <a href="about.html"><b>About</b></a>
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="brand">
+                    <div style="color: whitesmoke;"><b>DB J Component</b></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="logoimage">
+            <img src="images/Vit Logo.PNG" alt="VIT Logo"  width ="500">
+        </div>
+             
+        <div class="upload-container">
+            <div class="upload-header">
+                <h1><b>You can upload you file here!</b></h1>
+            </div>
+            <div class="upload-content">
+                <div class="single-upload">
+                    <h3>Upload File for XML</h3>
+                    <form id="singleUploadForm" name="singleUploadForm">
+                        <input id="singleFileUploadInput" type="file" name="file" class="file-input" required />
+                        <button type="submit" class="primary submit-btn">Submit</button>
+                    </form>
+                    <div class="upload-response">
+                        <div id="singleFileUploadError"></div>
+                        <div id="singleFileUploadSuccess"></div>
+                    </div>
+                </div>
+                <div class="single-upload">
+                    <h3>Upload File for JSON</h3>
+                    <form id="singleUploadForm" name="singleUploadForm">
+                        <input id="singleFileUploadInput" type="file" name="file" class="file-input" required />
+                        <button type="submit" class="primary submit-btn">Submit</button>
+                    </form>
+                    <div class="upload-response">
+                        <div id="singleFileUploadError"></div>
+                        <div id="singleFileUploadSuccess"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <script src="/js/main.js" ></script>
+    </div>
+    </body>
+    <div class="grad1"></div>
+    <footer>
+        <p><b>Microservice based Spring Boot Application for filtering data</b></p>
+    </footer>
+</html>
