@@ -161,57 +161,55 @@ public class MicroserviceMongoServiceImpl implements MicroserviceMongoService {
 		List<String> Reader = new ArrayList<String>();
 
 		try (Scanner sc = new Scanner(content)) {
-			boolean fn = false, fi = false;
-			String name = "", Id = "", Location = "", FilteredName = "", FilteredID = "", FilteredLocation = "";
+			boolean fn = false, fi = false, fl = false;
+			
+			String data = "", data1 = "", Location = "", FilteredName = "", FilteredID = "", FilteredLocation = "";
 			while (sc.hasNextLine()) {
-
 				String unfiltereddata = sc.nextLine();
+				Pattern p = Pattern
+						.compile("<[anfopcANFOPC][a-zA-Z_-]*[erER]>[a-zA-Z,_']*</[anfopcANFOPC][a-zA-Z_-]*[erER]>"); // ,
+																														// '
+																														// remove
+				data = unfiltereddata.trim();
+				Matcher m = p.matcher(data.replace(" ", "_"));
+				boolean b = m.matches();
 
-				Pattern pID = Pattern.compile(
-						"<[ucisnfoptUCISNFOPT][a-zA-Z_-]*[doDO.]>[0-9]*</[ucisnfoptUCISNFOPT][a-zA-Z_-]*[doDO.]>");
-				Id = unfiltereddata.trim();
-				Matcher mID = pID.matcher(Id.replace(" ", "_"));
-				boolean bID = mID.matches();
+				Pattern p2 = Pattern.compile(
+						"<[ucisnfoptUCISNFOPT][a-zA-Z_-]*[doDO.]>[a-zA-Z,_'0-9]*</[ucisnfoptUCISNFOPT][a-zA-Z_-]*[doDO.]>");
+				data1 = unfiltereddata.trim();
+				Matcher m2 = p2.matcher(data.replace(" ", "_"));
+				boolean c = m2.matches();
 
-				Pattern pName = Pattern
-						.compile("<[anfopcANFOPC][a-zA-Z_-]*[erER]>[a-zA-Z,_']*</[anfopcANFOPC][a-zA-Z_-]*[erER]>");
-				name = unfiltereddata.trim();
-				Matcher mName = pName.matcher(name.replace(" ", "_"));
-				boolean bName = mName.matches();
-
-				Pattern pLocation = Pattern.compile(
-						"<[lpsucisnfoptUCISNFOPTSPL][a-zA-Z_-]*[doDO.]>[a-zA-Z,_']*</[nrseESRN][a-zA-Z_-]*[doDO.]>");
-				Location = unfiltereddata.trim();
-				Matcher mLocation = pLocation.matcher(Location.replace(" ", "_"));
-				boolean bLocation = mLocation.matches();
-
-				if (bID) {
+                Pattern pLocation = Pattern.compile("<[lLsucisnfoptUCISNFOPTSPL][a-zA-Z_-]*[nNRN.]>[a-zA-Z,_']*</[lLseESRN][a-zA-Z_-]*[nrNR.]>");
+                Location = unfiltereddata.trim();
+                Matcher mLocation = pLocation.matcher(Location.replace(" ", "_"));
+                boolean bLocation = mLocation.matches();
+				
+				if (c) {
 					fi = true;
-					int x = Id.indexOf(">");
-					int y = Id.lastIndexOf("<");
-					FilteredID = Id.substring(x + 1, y);
+					int x = data1.indexOf(">");
+					int y = data1.lastIndexOf("<");
+					FilteredID = data1.substring(x + 1, y);
 				}
-
-				if (bName) {
+				if (b) {
 					fn = true;
-					int x = name.indexOf(">");
-					int y = name.lastIndexOf("<");
-					FilteredName = name.substring(x + 1, y);
+					int x = data.indexOf(">");
+					int y = data.lastIndexOf("<");
+					FilteredName = data.substring(x + 1, y);
 				}
-
-				if (bLocation) {
-					fn = true;
-					int x = Location.indexOf(">");
-					int y = Location.lastIndexOf("<");
-					FilteredLocation = Location.substring(x + 1, y);
-				}
-
-				if (fi && fn) {
+				 if (bLocation) {
+	                    fl = true;
+	                    int x = Location.indexOf(">");
+	                    int y = Location.lastIndexOf("<");
+	                    FilteredLocation = Location.substring(x + 1, y);
+	                }
+				 
+				if (fi || fn || fl) {
 					fn = false;
 					fi = false;
+					fl = false;
 					microserviceMongo.postSectors(FilteredName, FilteredID, FilteredLocation);
-					Reader.add("Name: " + FilteredName + "\nID :" + FilteredID + "\nSector :" + FilteredLocation);
-				}
+                    Reader.add("Name: " + FilteredName + "\nID :" + FilteredID + "\nSector :" + FilteredLocation);				}
 			}
 		}
 		return Reader;

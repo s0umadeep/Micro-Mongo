@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>About Application</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body style="background-color: whitesmoke;">
+    <div class="container">
+        <div class="nav-wrapper">
+            <div class="left-side">
+                <div class="nav-link-wrapper">
+                    <a href="index.html"><b>HOME</b></a>
+                </div>
+                <div class="nav-link-wrapper">
+                    <a href="about.html"> <b>About</b></a>
+                </div>
+            </div>
+
+            <div class="right-side">
+                <div class="brand">
+                    <div style="color: whitesmoke;"><b>DB J Component</b></div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="header">
+        <h1 >About the Project</h1>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="two-column-wrapper">
+                <div class="profile-image-wrapper" style="padding-top: 100px">
+                    <img src="images/System architect.PNG">
+                </div>
+
+                <div class="profile-content-wrapper">
+                    <h2>Introduction of the Project</h1>
+                        <p>The proposed model, we will be working on micro service that will serve the functionality for the project. We have done requirement analysis for various Web based Applications which will provide the service to the end user. Application Programming Interface (API) which can be define as interface medium in micro service so that various transaction operations are performed using the set of Hyper Text Transfer Protocol (HTTP) methods. The idea is to build using Spring framework uses REST API using dynamic libraries that can be added or are stored in text, ‘xml’ AND ‘JSON’ files. </p>
+                        <h3>Background study</h3>
+                        <p> Security is a crucial feature in database management system (DBMS) to identify and thwart the vulnerabilities, threats, and attacks. Cyber Security is a process and a practice designed to protect the system, server, data and network from any threats and attacks [2]. These are many attacks like denial of service, smurf attack, SQL injection attack, flood attack, phishing attacks, eavesdropping attack, brute and dictionary attacks etc. Various technologies and models are used now-a-days to protect the databases. Ontology-based model for preventing and detecting SQLIA using ontology (SQLIAO) used to predict and sort out the web application vulnerabilities and threats and analyse the attacks due to the vulnerability and also it focuses on the SQL injection (SQLI) attacks [1]. Similarly, machine learning and ontology-based countermeasures are used for SQLI attack [4]. Bio-Inspired anomaly based HTTP flood attack detection(BIFAD) is also an existing model used for the detection of HTTP flood attacks and denial of service (DoS) attack [6]. Several ontologies are developed to classify the relation between the vulnerabilities and the properties [3]. All these papers use some proposed model to identify and conquer the vulnerabilities, threats, and attacks.</p>
+                        <h3>Software Requrimented</h3>
+                        <p><ul>
+                            <li>Java Development Kit (JDK-8 above) </li>
+                            <li>Eclipse IDE/IntelliJ </li>
+                            <li>Maven (3.0 above)  </li>
+                            <li>MySQL server </li>
+                            <li>Robo3T (Mongo Database) </li>
+                            <li>Postman (API Client)  </li>
+                            <li>Any Browser like chorme </li>
+                    </ul> </p>
+                    </div>
+            </div>
+        </div>
+
+        <div class="two-column-wrapper">
+
+            <div class="profile-content-wrapper">
+                <h2>Microserview Arhitecture</h2>
+                <p>The Micro service architecture is divided into three sections which are as follows:
+                    <ul>
+                        <li><b>Spring Framework:</b> This is the most important component of the micro service architecture which is sectioned into various modules. We can relate each module within the core container. Different data can be accessed with the help of ‘Data Access Object’ and ‘Metadata’ through which various operations can be performed on these objects. ‘Metadata’ is something that tells about the information or behaviour about the data we are considering. It is then passed to spring container which is consisting of ‘Web’ and ‘Data Access’ parts. The major advantages of using Spring boot as a micro service due to presence of its own Apache Tomcat Server, so we need not to run or load another server in local machine. ‘Web’ is consisting of different functionality like Servlet, Web socket, Portlet etc. Similarly, ‘Data Access’ can perform functionality like Transactions, Repository, JDBC, JPA etc.</li>
+                        <li><b>Integrated Development Environment:</b> This is the section in which actual code for implementation is written using various java classes interlinked together with various packages. Spring boot uses annotation-based programming concept by which length of the program is reduced. These annotations can be used to connect different classes, interfaces, Plain Old Java Object (POJOs). Controller is the starting node from where based on the Http methods like GET, POST, PUT it will transfer its control to next class which is ‘Service’. The main code resides inside ‘ServiceImpl’ class which contain the business logic and flow. DAO Implementation is responsible for accessing the objects from variables to different databases like SQL, Mongo etc. once this is done, the correspondent values will be shown in the UI or API Client application like Postman.</li>
+                        <li><b>Maven Framework:</b> This is built and package management tool which is mainly used to bind the enterprise application project. It mainly uses ‘Project Object Model’ (pom.xml) for dependency injection for importing various functionalities. We can build the Spring project once completed to convert into a package which is Java Archive (jar). Later, this jar can be used to run the Spring boot standalone application. </li>
+                      </ul>  	
+         
+                    </p>
+            
+        
+            </div>
+
+            <div class="profile-image-wrapper">
+                <img src="images/Data Process.PNG">
+            </div>
+
+        </div>
+       
+        <div class="two-column-wrapper">
+            <div class="profile-image-wrapper">
+                <img src="images/UI architect.PNG">
+            </div>
+            <div class="profile-content-wrapper">
+                <h2>UI Architecture</h1>
+                    <p>The web page design will use HTML for its structural design, CSS for styling. Using JavaScript, the software on the remote server sends information to the client and the software on the client side reads the information and renders a Web page on screen. The webpage will contain a heading. A short description about the webpage. We will be able to upload data from the webpage into the database. It has three upload buttons to upload different file formats. Since we make use of three file formats which is Jason, text and xml. The user interface is connected to the database via Rest API. We make use of GET, PUT and POST methods to input and retrieve data. </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+<footer>
+    <p><b>Microservice based Spring Boot Application for filtering data</b></p>
+</footer>
+</html>
