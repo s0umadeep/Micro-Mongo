@@ -38,7 +38,8 @@ public class MicroserviceMongoController {
 	List<String> getFilterSector(@PathVariable("id") String id) {
 		return microservicemongo.getFilterSector(id);
 	}
-
+	
+		
 	@PostMapping("/Microservice/Attack/upload") // received file by database (mysql) for XML code
 	public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
 		@SuppressWarnings("unused")
@@ -52,13 +53,13 @@ public class MicroserviceMongoController {
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(new String("Operation Failed"));
 		}
 	}
-
+	
 	@PostMapping("/Microservice/Attack/UnstructeredData") // received file by database (mongodb) for JSON code
 	ServiceSectors postSectors(@RequestBody ServiceSectors sectors) {
 		return microservicemongo.postSectors(sectors);
 	}
-	
-	@GetMapping("/Microservice/Attack/getUnstructeredData") //get data from Mongo DB
+
+	@GetMapping("/Microservice/Attack/getUnstructeredData") // get data from Mongo DB
 	List<ServiceSectors> getUnstructuredData() {
 		return microservicemongo.getUnstructuredData();
 	}
