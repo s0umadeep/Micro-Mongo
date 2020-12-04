@@ -2,23 +2,28 @@ package com.vit.db.jcomponent.microservicemongo.model;
 
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "Domain")
 public class ServiceSectors {
 
-	Integer serviceId;
+	@Id
+	String serviceId;
 	List<ServiceSector> service;
 	List<Attacks> attacks;
 
 	/**
 	 * @return the serviceId
 	 */
-	public Integer getServiceId() {
+	public String getServiceId() {
 		return serviceId;
 	}
 
 	/**
 	 * @param serviceId the serviceId to set
 	 */
-	public void setServiceId(Integer serviceId) {
+	public void setServiceId(String serviceId) {
 		this.serviceId = serviceId;
 	}
 
@@ -62,7 +67,7 @@ public class ServiceSectors {
 	 * @param service
 	 * @param attacks
 	 */
-	public ServiceSectors(Integer serviceId, List<ServiceSector> service, List<Attacks> attacks) {
+	public ServiceSectors(String serviceId, List<ServiceSector> service, List<Attacks> attacks) {
 		super();
 		this.serviceId = serviceId;
 		this.service = service;

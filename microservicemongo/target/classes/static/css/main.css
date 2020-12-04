@@ -1,0 +1,248 @@
+ * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 1.7em;
+}
+
+a {
+    color: #128ff2;
+}
+
+/*Master style */
+ 
+ body {
+     font-family: 'Open Sans', sans-serif;
+     margin: 0px;
+     margin-bottom: auto;
+ }
+ 
+ .container {
+     display: grid;
+     grid-template-columns: 1fr;
+  
+ }
+ /* Nav styles*/
+ 
+ .nav-wrapper {
+     display: flex;
+     justify-content: space-between;
+     padding: 20px;
+     background-color: black;
+     text-decoration-color: whitesmoke;
+     
+ }
+ .left-side {
+     display: flex;
+ }
+ 
+ .nav-wrapper>.left-side>div {
+     margin-right: 20px;
+     font-size: 0.9em;
+     text-transform: uppercase;
+ }
+ 
+ .nav-link-wrapper {
+     height: 22px;
+     border-bottom: 1px solid transparent;
+     transition: border-bottom 0.5s;
+ }
+ 
+ .nav-link-wrapper a {
+     color: #8a8a8a;
+     text-decoration: none;
+     transition: color 0.5s;
+ }
+ 
+ .nav-link-wrapper:hover {
+     border-bottom: 1px solid black;
+ }
+ 
+ .nav-link-wrapper:hover {
+     color: black;
+ }
+ 
+
+button {
+    box-shadow: none;
+    border: 1px solid transparent;
+    font-size: 14px;
+    outline: none;
+    line-height: 100%;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 0.6rem 1rem;
+    border-radius: 2px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    min-height: 38px;
+}
+
+button.primary {
+    background-color: #128ff2;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+    color: #fff;
+}
+
+input {
+    font-size: 1rem;
+}
+
+input[type="file"] {
+    border: 1px solid #128ff2;
+    padding: 6px;
+    max-width: 100%;
+}
+
+.file-input {
+    width: 100%;
+}
+
+.submit-btn {
+    display: block;
+    margin-top: 15px;
+    min-width: 100px;
+}
+
+@media screen and (min-width: 500px) {
+    .file-input {
+        width: calc(100% - 115px);
+    }
+
+    .submit-btn {
+        display: inline-block;
+        margin-top: 0;
+        margin-left: 10px;
+    }
+}
+
+.upload-container {
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: whitesmoke;
+      box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+      margin-top: 60px;
+      min-height: 400px;
+      position: relative;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 3%;
+}
+
+.upload-header {
+    border-bottom: 1px solid #ececec;
+}
+
+.upload-header h1 {
+    font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
+    color: seagreen;
+}
+
+.single-upload {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.upload-response {
+    overflow-x: hidden;
+    word-break: break-all;
+}
+ 
+ 
+ /*portfolio styles*/
+ 
+ .portfolio-items-wrapper {
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr;
+ }
+ 
+ .portfolio-items-wrapper {
+     position: relative;
+ }
+ 
+ .portfolio-img-background {
+     height: 350px;
+     width: 100%;
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+ }
+ 
+ .img-text-wrapper {
+     position: absolute;
+     top: 0;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     height: 100%;
+     text-align: center;
+     padding-left: 100px;
+     padding-right: 100px;
+ }
+ 
+
+ /* About page */
+ 
+ .two-column-wrapper {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     justify-content: center;
+ }
+ 
+ .profile-image-wrapper img {
+     align-items: center;
+     image-rendering: auto;
+     width: 80%;
+     padding-left: 100px;
+ }
+ 
+ .profile-content-wrapper {
+     padding: 5px;
+     text-align: justify;
+ }
+ 
+ .profile-content-wrapper h2{
+     color: lightseagreen;
+ }
+
+ .header{
+ padding: 1px;
+ text-align: center;
+ font-size: 30px;
+ color: seagreen;
+}
+
+.logoimage{
+    position: relative;
+    padding-top: 20px ;
+    padding-left: 35%;
+}
+.grad1 {
+  height: 20px;
+  background-image: linear-gradient(white, black);
+}
+
+/*footer*/
+footer {
+    clear: both;
+    background-color: black;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    height: 60px;
+    bottom: 0%;
+  }
+
